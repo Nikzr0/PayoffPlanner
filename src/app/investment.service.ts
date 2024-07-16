@@ -9,11 +9,11 @@ export class InvestmentService {
       valueEndOfYear: number;
       annualInvestment: number;
       totalInterest: number;
-      totalAmountInvested: number; //totalAmountPaid
+      totalAmountInvested: number;
   }[] | undefined>(undefined);
       
   CalculateInvestmentResults(data: InvestmentInput) {
-    const { loanSize, monthlyPayment, annualInterest, duration } = data;
+    const { loanSize, monthlyPayment, annualInterest} = data; // duration
 
     const annualData = [];
     let loan = loanSize;
@@ -21,6 +21,8 @@ export class InvestmentService {
     let totalInterest = 0;
     let totalAmountPaid = 0;
     let year = 0;
+
+    let yearCounter = 0;
     
     annualData.push({
       year: year++,
@@ -46,6 +48,8 @@ export class InvestmentService {
         totalInterest: totalInterest,
         totalAmountInvested: totalAmountPaid,
       });
+
+      yearCounter++;
     }
 
     loan += interestPerYear;
@@ -60,6 +64,9 @@ export class InvestmentService {
       totalInterest: totalInterest,
       totalAmountInvested: totalAmountPaid,
     });
+
+    yearCounter++;
+
   
     this.resultData.set(annualData); 
   }  

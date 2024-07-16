@@ -19,14 +19,14 @@ export class UserInputComponent {
   enteredMonthlyPayment = signal('1');
 
   enteredAnnualInterest = signal('5');
-  enteredDuration = signal('100');
+  // enteredDuration = signal('0');
 
   constructor(private investmentService: InvestmentService) {}
   
   onSubmit() {
     this.investmentService.CalculateInvestmentResults({loanSize: + this.enteredLoanSize(),
       monthlyPayment: + this.enteredMonthlyPayment(),
-      annualInterest: + this.enteredAnnualInterest(),
-       duration: + this.enteredDuration()});
+      annualInterest: + this.enteredAnnualInterest()});
+      //, duration: + this.enteredDuration()
   }
 }
